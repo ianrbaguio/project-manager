@@ -13,6 +13,9 @@ class Login extends Component {
             error: '',
             user: []
         }
+
+        //bind handleChange to handle error when textbox has changed
+        this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount(){
@@ -28,6 +31,8 @@ class Login extends Component {
 
     handleClick(){
         var data = {user: this.state.username, password: this.state.password};
+        console.log("username: " + data.user);
+        console.log("password: " + data.password);
     }
 
     //reference: https://medium.com/technoetics/create-basic-login-forms-using-create-react-app-module-in-reactjs-511b9790dede
@@ -37,8 +42,8 @@ class Login extends Component {
             <div>
                 <h2>WELCOME TO PROJECT MANAGER</h2>
                 <div className="center">
-                    <span className="span-label">Username: </span> <input name="username" value={username} type="text" className="input-text" onChange={this.handleChange()}/>
-                    <span className="span-label">Password: </span> <input name="password" value={password} type="password" className="input-text" onChange={this.handleChange()}/>
+                    <span className="span-label">Username: </span> <input name="username" value={username} type="text" className="input-text" onChange={this.handleChange}/>
+                    <span className="span-label">Password: </span> <input name="password" value={password} type="password" className="input-text" onChange={this.handleChange}/>
                     <button className="button" onClick={() => this.handleClick()}>Login</button>
                 </div>
             </div>

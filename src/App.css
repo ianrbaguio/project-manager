@@ -31,3 +31,28 @@
     transform: rotate(360deg);
   }
 }
+
+h2{
+  text-align:center;
+}
+
+.span-label{
+  display:inline-block;
+  min-width:100px;
+  text-align:right;
+}
+
+.input-text{
+  margin: 5px 10px;
+}
+
+.button{
+  text-align: center;
+  margin: 0 auto;
+  width:100%;
+}
+
+.center{
+  margin: 0 auto;
+  width:25%;
+}
