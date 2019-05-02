@@ -10,7 +10,7 @@ function PrivateRoute({component: Component, ...rest}){
     //console.log("user: " + _user);
 
     //user's logged in
-    if(user != [] && user != null){
+    if(_user != [] && _user != null){
         _isLoggedIn = true;
     }
 
