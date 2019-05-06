@@ -32,6 +32,28 @@
   }
 }
 
+/********************************************************************************
+              GENERAL CLASSES
+*********************************************************************************/
+.error-message{
+  color:red;
+}
+
+button{
+  width: 200px;
+  height: 30px;
+  border: none;
+  text-align:center;
+  background-color: #33658A;
+  color: #D6F0FF;
+}
+
+button:hover{
+  cursor:pointer;
+}
+/********************************************************************************
+              LOGIN CLASSES
+*********************************************************************************/
 h2{
   text-align:center;
 }
@@ -47,14 +69,26 @@ h2{
 }
 
 .button{
-  text-align: center;
-  margin: 0 auto;
-  width:100%;
+  width:40%;
+  margin: 10px;
 }
 
 .center{
   margin: 0 auto;
   width:25%;
+}
+
+.login-nav-container{
+  width:100%;
+  text-align:center;
+  background-color: #33658A;
+  color: #D6F0FF;
+  padding: 5px 0;
+}
+
+.login-nav-container a{
+  color: #D6F0FF;
+  padding: 0 10px;
 }
 
 /********************************************************************************
@@ -81,3 +115,5 @@ h2{
   height: 60px;
   padding: 10px 0;
 }
+
+

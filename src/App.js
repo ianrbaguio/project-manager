@@ -16,6 +16,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Login}/>
             <PrivateRoute exact path="/main" component={ProjectTable} />
+            <Redirect to="/" />
           </Switch>
         </div>
       </Router>

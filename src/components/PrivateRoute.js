@@ -7,10 +7,9 @@ function PrivateRoute({component: Component, ...rest}){
     var _isLoggedIn = false;
     const _user = sessionStorage.getItem('LoggedInUser');
 
-    //console.log("user: " + _user);
 
     //user's logged in
-    if(_user != [] && _user != null){
+    if(_user !== [] && _user !== null){
         _isLoggedIn = true;
     }
 
