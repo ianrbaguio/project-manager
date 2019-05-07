@@ -46,7 +46,7 @@ class Login extends Component {
             this.setState({users: data.user});
             sessionStorage.setItem("LoggedInUser", this.state.users);
 
-            if(data.user.length != 0){
+            if(data.user.length !== 0){
                 window.location = "/main"
             }
             else{
