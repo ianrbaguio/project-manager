@@ -4,7 +4,7 @@ import {BrowserRouter as Router, Switch, Route, Redirect, withRouter, Link} from
 import './App.css';
 import PrivateRoute from './components/PrivateRoute';
 import Login from './components/Login';
-import Register from './components/Register';
+import Demo from './components/Register';
 import Layout from './components/Layout';
 import ProjectTable from './components/ProjectTable';
 
@@ -16,7 +16,7 @@ class App extends Component {
         <div>
           <Switch>
             <Route exact path="/" component={Login}/>
-            <Route exact path="/register" component={Register}/>
+            <Route exact path="/register" component={Demo}/>
             <PrivateRoute exact path="/main" component={ProjectTable} />
             <Redirect to="/" />
           </Switch>
