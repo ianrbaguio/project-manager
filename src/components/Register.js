@@ -80,7 +80,6 @@ class Register extends React.Component{
         const {classes} = this.props;
         const steps = getSteps();
         const {activeStep} = this.state;
-
         return(
             <div>
                 <LoginNavbar/>
@@ -131,9 +130,22 @@ class Register extends React.Component{
                     </div>;
                     //Second step: Login credentials
                     case 1:
-                    return "1";
-                    case steps.length:
-                    return "steps.length";
+                    return <div>
+                    <Button
+                        disabled={activeStep === 0}
+                        onClick={this.handleBack}
+                        className={classes.backButton}>
+                        Back
+                    </Button>
+                    <Button variant="contained" color="primary" onClick={this.handleNext}>
+                        {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                    </Button>
+                    </div>;
+                    case (steps.length - 1):
+                    return <div className="center-form">
+                    <Typography className={classes.instructions}>All steps completed</Typography>
+                    <Button onClick={this.handleReset}>Reset</Button>
+                    </div>;
                     default:
                     return null;
                     }
