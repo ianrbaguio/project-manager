@@ -37,4 +37,30 @@ router.post("/login", function(req, res, next){
         (err)?res.send(err):res.send(JSON.stringify({user:data}));
     });
 });
+
+router.get("/checkUsername", function(req, res, next){
+    var username = req.query.username;
+
+    var sql = "SELECT COUNT(Username) AS UserExists FROM Users WHERE username = ?";
+    db.query(sql,[username], function(err, data){
+        (err) ? res.send(err) : res.send(JSON.stringify({UserExists: data[0].UserExists}))
+    });
+});
+
+router.post("/register", function(req,res,next){
+    var firstName = req.body.firstName;
+    var lastName = req.body.lastName;
+    var username = req.body.username;
+    var email = req.body.email;
+    var password = req.body.password;
+
+    var values = [[username, password, email, firstName, lastName]];
+
+    console.log(values);
+
+    var sql = "INSERT INTO Users(Username, Password, Email, FirstName, LastName) VALUES ?"
+    db.query(sql,[values], function(err,data){
+        (err) ? res.send(err) : res.send(JSON.stringify({Registered: 1}))
+    });
+});
 module.exports = router;

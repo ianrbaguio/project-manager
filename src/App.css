@@ -122,6 +122,6 @@ h2{
 
 .center-form{
   margin: 0 auto;
-  padding: 25px;
+  /* padding: 25px; */
   text-align:center;
 }

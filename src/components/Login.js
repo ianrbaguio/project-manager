@@ -33,8 +33,6 @@ class Login extends Component {
 
     handleClick(){
         var data = {username: this.state.username, password: this.state.password};
-
-        console.log("Username: " + data.username + " Password: " + data.password);
         
         fetch("http://localhost:9000/webService/login", {
             method: "POST",
