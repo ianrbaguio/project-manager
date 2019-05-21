@@ -39,7 +39,7 @@
   color:red;
 }
 
-button{
+button, a{
   width: 200px;
   height: 30px;
   border: none;
@@ -50,6 +50,11 @@ button{
 
 button:hover{
   cursor:pointer;
+}
+
+.full-width{
+  width:50%;
+  margin: 0 auto;
 }
 /********************************************************************************
               LOGIN CLASSES
@@ -69,8 +74,10 @@ h2{
 }
 
 .button{
-  width:40%;
+  width:100%;
   margin: 10px;
+  display:inline-block;
+  font-size: 12px;
 }
 
 .center{
@@ -89,6 +96,10 @@ h2{
 .login-nav-container a{
   color: #D6F0FF;
   padding: 0 10px;
+}
+
+.register{
+  text-decoration: none;
 }
 
 /********************************************************************************
@@ -124,4 +135,27 @@ h2{
   margin: 0 auto;
   /* padding: 25px; */
   text-align:center;
+}
+
+/**********************************************************
+                  PROJECT TABLE CONTAINER CLASSES
+**********************************************************/            
+.project-table-container{
+  width:60%;
+  margin:0 auto;
+  padding:10px;
+}
+
+.project-row-container{
+  background-color: #33658A;
+  color: #D6F0FF;
+  width:100%;
+  height:50px;
+  margin:10px;
+}
+
+.project-column-header{
+  padding-top:15px;
+  width:25%;
+  display:inline-block;
 }

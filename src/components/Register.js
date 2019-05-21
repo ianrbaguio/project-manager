@@ -63,6 +63,11 @@ class Register extends React.Component{
         usernameExists: 0,
     }
 
+    /******************************************************************
+     * 
+     * Function that checks if the inputted username exists
+     * 
+    *******************************************************************/
     checkUsernameExists = username => {
         fetch("http://localhost:9000/webService/checkUsername?username=" + username)
             .then(response => response.json())
@@ -74,6 +79,11 @@ class Register extends React.Component{
             .catch(error => console.log("Get User Error: " + error));
     }
 
+    /******************************************************************
+     * 
+     * Function that registers new user
+     * 
+    *******************************************************************/
     registerNewUser = () => {
         var data = {firstName: this.state.firstName, 
                     lastName: this.state.lastName,
@@ -101,6 +111,12 @@ class Register extends React.Component{
         .catch(error => console.log("Register Error: " + error));
     }
 
+    /******************************************************************
+     * 
+     * Function that validates first step of stepper 
+     * (firstName & lastName)
+     * 
+    *******************************************************************/
     firstStepValidation = () => {
 
         var isValidate = true;
@@ -127,6 +143,12 @@ class Register extends React.Component{
 
     };
 
+    /******************************************************************
+     * 
+     * Function that validates second step of stepper
+     * (username, email and password)
+     * 
+    *******************************************************************/
     secondStepValidation = () => {
 
         var isValidate = true;
@@ -185,18 +207,30 @@ class Register extends React.Component{
 
     };
 
+    /******************************************************************
+     * 
+     * Function that handles changes in textboxes
+     * 
+    *******************************************************************/
     handleChange = name => event => {
         this.setState({ [name]: event.target.value });
 
+    // if the textbox inputted change is from username then check if username exists
         if([name][0] === "username"){
             this.checkUsernameExists(event.target.value);
         }
       };
 
+    /******************************************************************
+     * 
+     * Function that handles the next button for stepper
+     * 
+    *******************************************************************/
     handleNext = () => {
 
         var stepValidate = false;
 
+        //checks if each stepper steps and if all inputs are validated
         if((this.state.activeStep === 0 && this.firstStepValidation()) 
         || (this.state.activeStep === 1 && this.secondStepValidation())) {
             stepValidate = true;
@@ -213,6 +247,11 @@ class Register extends React.Component{
         }
     };
 
+    /******************************************************************
+     * 
+     * Function that handles the back button for stepper
+     * 
+    *******************************************************************/
     handleBack = () => {
         this.setState(state => ({
             activeStep: state.activeStep - 1,
@@ -220,6 +259,11 @@ class Register extends React.Component{
         }));
     };
 
+    /******************************************************************
+     * 
+     * Function that handles the reset button for stepper
+     * 
+    *******************************************************************/
     handleReset = () => {
         this.setState({
             activeStep: 0,
@@ -243,6 +287,7 @@ class Register extends React.Component{
                     ))}
                 </Stepper>
                 <div>
+                {/* Switch Render Condition: Renders base on activeStep */}
                 {(() => {
                     switch(activeStep) {
                     //First step: Name

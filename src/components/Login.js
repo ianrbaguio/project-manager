@@ -31,10 +31,11 @@ class Login extends Component {
         this.setState({ [name]: value});
     }
 
-    handleClick(){
+    handleClick = e => {
         var data = {username: this.state.username, password: this.state.password};
         
-        fetch("http://localhost:9000/webService/login", {
+        if(data.username !== "" && data.password !== ""){
+            fetch("http://localhost:9000/webService/login", {
             method: "POST",
             headers: {'Content-Type' : 'application/json'},
             body: JSON.stringify(data)
@@ -42,7 +43,7 @@ class Login extends Component {
         .then(response => response.json())
         .then((data) => {
             this.setState({users: data.user});
-            sessionStorage.setItem("LoggedInUser", this.state.users);
+            sessionStorage.setItem("LoggedInUser", JSON.stringify(this.state.users));
 
             if(data.user.length !== 0){
                 window.location = "/main"
@@ -52,8 +53,16 @@ class Login extends Component {
             }
         })
         .catch(error => console.log("Get User Error: " + error));
+        }
+        else{
+            this.setState({
+                error: "Please enter your username/password"
+            });
+        }
 
+        e.preventDefault();
     }
+    
 
     //reference: https://medium.com/technoetics/create-basic-login-forms-using-create-react-app-module-in-reactjs-511b9790dede
     render(){
@@ -63,11 +72,17 @@ class Login extends Component {
                 <LoginNavbar/>
                 <h2>WELCOME TO PROJECT MANAGER</h2>
                 <div className="center">
+                    <form onSubmit={this.handleClick}>
                     <span className="span-label">Username: </span> <input name="username" value={username} type="text" className="input-text" onChange={this.handleChange}/>
                     <span className="span-label">Password: </span> <input name="password" value={password} type="password" className="input-text" onChange={this.handleChange}/>
-                    <button className="button" onClick={() => this.handleClick()}>Login</button>
-                    <button className="button" onClick={() => window.location = "/register"}>Register</button>
+                    <div className="full-width">
+                    <button className="button" type="submit">Login</button>
+                    </div>
                     <span className="error-message">{this.state.error}</span>
+                    </form>
+                    <br/>
+                    Not yet registered? Register Now <br/>
+                    <button className="button" onClick={() => window.location="/register"}>Register</button>
                 </div>
             </div>
         )
