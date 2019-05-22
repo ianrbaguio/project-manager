@@ -78,4 +78,13 @@ router.get("/getProjects", function(req, res, next){
         (err) ? res.send(err) : res.send(JSON.stringify({projects: data[0]}));
     });
 });
+
+router.get("/getTasks", function(req, res, next){
+    var ProjectID = req.query.projectID;
+
+    var sql = "CALL GetTasks(?)";
+    db.query(sql, [ProjectID], function(err,data){
+        (err) ? res.send(err) : res.send(JSON.stringify({tasks: data[0]}));
+    });
+});
 module.exports = router;
