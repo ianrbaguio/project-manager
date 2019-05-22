@@ -103,9 +103,9 @@ BEGIN
 			SELECT ProjectID, 
 				   UserID, 
                    ProjectName, 
-                   StartDate, 
-                   TargetEndDate, 
-                   ActualEndDate 
+                   DATE_FORMAT(StartDate, '%M %d, %Y') AS StartDate, 
+                   DATE_FORMAT(TargetEndDate, '%M %d, %Y') AS TargetEndDate,  
+                   IFNULL(DATE_FORMAT(ActualEndDate, '%M %d, %Y'), '') AS ActualEndDate
 			FROM Projects
             WHERE UserID = $UserID; 
             
@@ -124,7 +124,20 @@ BEGIN
     END IF;
 END $$
 
+-- CREATION OF GetTasks PROCEDURE
+DROP PROCEDURE GetTasks;
+DELIMITER $$
+CREATE PROCEDURE GetTasks($ProjectID INT)
+BEGIN
+END $$;
 
 DELIMITER ;
+
+USE ProjectManager;
+
+SELECT * FROM PROJECTS
+
+CALL GetProjects(2);
+
 
 
