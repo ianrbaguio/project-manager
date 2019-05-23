@@ -87,4 +87,13 @@ router.get("/getTasks", function(req, res, next){
         (err) ? res.send(err) : res.send(JSON.stringify({tasks: data[0]}));
     });
 });
+
+router.get("/completeTask", function(req, res, next){
+    var TaskID = req.query.taskID;
+
+    var sql = "CALL CompleteTask(?)";
+    db.query(sql, [TaskID], function(err,data){
+        (err) ? res.send(JSON.stringify({return: false})) : res.send(JSON.stringify({return: true}))
+    });
+});
 module.exports = router;

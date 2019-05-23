@@ -141,7 +141,7 @@ h2{
                   PROJECT TABLE CONTAINER CLASSES
 **********************************************************/            
 .project-table-container{
-  width:60%;
+  width:75%;
   margin:0 auto;
   padding:10px;
 }
@@ -165,10 +165,34 @@ h2{
   /* padding: 5px 0; */
 }
 
-.project-column-header{
+.project-column{
   padding-top:15px;
-  width:25%;
   display:inline-block;
+}
+
+.project-header{
+  font-weight: bold;
+}
+
+.project-hide-show-header{
+  width:15%;
+  text-align: center;
+}
+
+.project-name{
+  width: 30%;
+}
+
+.project-name-header{
+  text-align: center;
+}
+
+.project-start-date{
+  width:25%;
+}
+
+.project-end-date{
+  width:25%;
 }
 
 .project-task-row{
