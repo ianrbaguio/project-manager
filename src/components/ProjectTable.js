@@ -2,13 +2,17 @@ import React from 'react';
 //import logo from '../logo.svg';
 import ProjectRow from './ProjectRow';
 import '../App.css';
+import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
+import Button from 'react-bootstrap/Button';
+import AddProjectModal from './AddProjectModal';
 
 class ProjectTable extends React.Component{
     constructor(props){
         super(props);
         this.state = {
             projects: [],
-            error: ""
+            error: "",
+            addProjectModalShow: false,
         };
     }
     
@@ -29,6 +33,8 @@ class ProjectTable extends React.Component{
     render(){
         const projects = this.state.projects;
         
+        let addProjectModalClose = () => this.setState({addProjectModalShow: false});
+        
         /*  
             Renders all user's projects
         */
@@ -41,7 +47,19 @@ class ProjectTable extends React.Component{
 
         return(
             <div className="project-table-container">
-            <div id="ProjectTableHeaders">
+            <div id="AddProjectContainer" className="add-project-container">
+                <ButtonToolbar>
+                    <Button variant="primary"
+                            onClick={() => this.setState({addProjectModalShow: true})}
+                            > + NEW PROJECT</Button>
+
+                    <AddProjectModal
+                        show={this.state.addProjectModalShow}
+                        onHide={addProjectModalClose}
+                    />
+                </ButtonToolbar>
+            </div>
+            <div id="ProjectTableHeaders" className="project-headers-container">
                 <div className="project-column project-header project-hide-show-header" >SHOW/HIDE</div>
                 <div className="project-column project-header project-name project-name-header">PROJECT NAME</div>
                 <div className="project-column project-header project-start-date">START DATE</div>

@@ -41,3 +41,11 @@ CREATE TABLE Tasks(
     PRIMARY KEY(TaskID),
     FOREIGN KEY (ProjectID) REFERENCES Projects(ProjectID)
 );
+
+-- Creation of Debugging Table
+-- Use for debugging stored procedures
+CREATE TABLE Debugging(
+	DebugID INT AUTO_INCREMENT,
+    Result VARCHAR(250),
+    PRIMARY KEY(DebugID)
+);

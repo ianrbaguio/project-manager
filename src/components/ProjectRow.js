@@ -6,6 +6,9 @@ import TaskTable from './TaskTable'
 class ProjectRow extends React.Component{
     constructor(props){
         super(props);
+        this.state = {
+            showTasks: "block"
+        }
     }
     
     showHideClick = () => {
@@ -14,6 +17,7 @@ class ProjectRow extends React.Component{
 
     render(){
     var project = this.props.project;
+    var {showTasks} = this.state;
         return(
             <div className="project-full-container">
                 <div className="project-row-container">
@@ -23,7 +27,7 @@ class ProjectRow extends React.Component{
                 <div className="project-column project-end-date">{project.TargetEndDate}</div>
                 </div>
 
-                <div className="project-task-container">
+                <div className="project-task-container" style={{display:showTasks}}>
                     <TaskTable projectID={project.ProjectID}/>
                 </div>
             </div>

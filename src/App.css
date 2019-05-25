@@ -56,6 +56,11 @@ button:hover{
   width:50%;
   margin: 0 auto;
 }
+
+.theme{
+  background-color: #33658A;
+  color: #D6F0FF;
+}
 /********************************************************************************
               LOGIN CLASSES
 *********************************************************************************/
@@ -122,8 +127,8 @@ h2{
   background-color: #33658A;
   color: #D6F0FF;
   bottom: 0px;
-  position: absolute;
-  height: 60px;
+  position: relative;
+  /* height: 60px; */
   padding: 10px 0;
 }
 
@@ -139,7 +144,15 @@ h2{
 
 /**********************************************************
                   PROJECT TABLE CONTAINER CLASSES
-**********************************************************/            
+**********************************************************/
+.add-project-container{
+  float:right;
+}
+
+.project-headers-container{
+  clear:both;
+}
+
 .project-table-container{
   width:75%;
   margin:0 auto;
