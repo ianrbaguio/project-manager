@@ -9,11 +9,45 @@ class AddProjectModal extends React.Component{
             name: "",
             startDate: "",
             userID: 0,
-            targetEndDate: ""
+            targetEndDate: "",
+            error: "",
         }
 
         //bind handleChange to handle error when textbox has changed
         this.handleChange = this.handleChange.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    formValidation = () => {
+        const {name, startDate, userID, targetEndDate, error} = this.state;
+        
+        var isValidate = true;
+        if(name === ""){
+            this.setState({error: "Please enter new project name."});
+            isValidate = false;
+        }
+        else if(startDate === "" ){
+            this.setState({error: "Please select new project's start date"});
+            isValidate = false;
+        }
+        else if(targetEndDate === ""){
+            this.setState({error: "Please select new project's target end date"});
+            isValidate = false;
+        }
+        else{
+            this.setState({error: ""});
+        }
+
+        return isValidate;
+    }
+
+    handleClick(){
+
+        //if it's true then add new project
+        if(this.formValidation()){
+            console.log('create new project');
+        }
+
     }
 
     componentDidMount(){
@@ -37,7 +71,7 @@ class AddProjectModal extends React.Component{
     }
 
     render(){
-        const {name, startDate, targetEndDate} = this.state
+        const {name, startDate, userID, targetEndDate, error} = this.state
         return(
             <Modal
                 {...this.props}
@@ -51,10 +85,14 @@ class AddProjectModal extends React.Component{
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <div className="center">
+                    <div className="center-modal">
                          <span className="span-label">Project Name: </span> <input name="name" value={name} type="text" className="input-text" onChange={this.handleChange}/>
                          <span className="span-label">Start Date:</span> <input name="startDate" value={startDate} type="date" className="input-text" onChange={this.handleChange}/>
                          <span className="span-label">Target End Date:</span> <input name="targetEndDate" value={targetEndDate} type="date" className="input-text" onChange={this.handleChange}/>
+                         <br/>
+                         <button id="AddProjectButton" className="button" onClick={this.handleClick}>Add Project</button>
+                         <br/>
+                         <span className="error-message">{error}</span>
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
