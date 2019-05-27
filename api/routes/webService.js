@@ -96,4 +96,17 @@ router.get("/completeTask", function(req, res, next){
         (err) ? res.send(JSON.stringify({return: false})) : res.send(JSON.stringify({return: true}))
     });
 });
+
+router.get("/addProject", function(req, res, next){
+    var name = req.query.name;
+    var userID = req.query.userID;
+    var startDate = req.query.startDate;
+    var targetEndDate = req.query.targetEndDate;
+
+    var sql = "CALL AddProject(?,?,?,?)";
+    db.query(sql, [userID, name, startDate, targetEndDate], function(err,data){
+        (err) ? res.send(err) : res.send(JSON.stringify({return: true}));
+    });
+
+});
 module.exports = router;
