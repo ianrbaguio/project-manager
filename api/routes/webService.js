@@ -27,11 +27,9 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 router.post("/login", function(req, res, next){
-    var body = req.body;
+    //var body = req.body;
     var username = req.body.username;
     var password = req.body.password;
-    console.log(body);
-    console.log("username: " + username + " password: " + password);
     var sql = "SELECT UserID, Username, FirstName, LastName FROM Users WHERE username = ? AND password = ?"
     db.query(sql,[username, password], function(err, data){
         (err)?res.send(err):res.send(JSON.stringify({user:data}));
@@ -55,8 +53,6 @@ router.post("/register", function(req,res,next){
     var password = req.body.password;
 
     var values = [[username, password, email, firstName, lastName]];
-
-    console.log(values);
 
     var sql = "INSERT INTO Users(Username, Password, Email, FirstName, LastName) VALUES ?";
     db.query(sql,[values], function(err,data){
@@ -97,11 +93,11 @@ router.get("/completeTask", function(req, res, next){
     });
 });
 
-router.get("/addProject", function(req, res, next){
-    var name = req.query.name;
-    var userID = req.query.userID;
-    var startDate = req.query.startDate;
-    var targetEndDate = req.query.targetEndDate;
+router.post("/addProject", function(req, res, next){
+    var name = req.body.name;
+    var userID = req.body.userID;
+    var startDate = req.body.startDate;
+    var targetEndDate = req.body.targetEndDate;
 
     var sql = "CALL AddProject(?,?,?,?)";
     db.query(sql, [userID, name, startDate, targetEndDate], function(err,data){

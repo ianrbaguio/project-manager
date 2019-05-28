@@ -10,6 +10,7 @@ class AddProjectModal extends React.Component{
             startDate: "",
             userID: 0,
             targetEndDate: "",
+            success: "",
             error: "",
         }
 
@@ -42,10 +43,26 @@ class AddProjectModal extends React.Component{
     }
 
     handleClick(){
+        var data = {name: this.state.name,
+                    userID: this.state.userID,
+                    startDate: this.state.startDate,
+                    targetEndDate: this.state.targetEndDate}
 
         //if it's true then add new project
         if(this.formValidation()){
-            console.log('create new project');
+            fetch("http://localhost:9000/webService/addProject", {
+                method: "POST",
+                headers: {'Content-Type' : 'application/json'},
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then((data) => {
+                if(data.return){
+                    this.setState({success: "New Project Added"});
+                    setTimeout(function(){this.props.onHide()}, 3000);
+                }
+            })
+            .catch(err => console.log("Add Project Error: " + err))
         }
 
     }
@@ -62,6 +79,9 @@ class AddProjectModal extends React.Component{
             });
 
         }
+
+        this.props.onHide.bind(this);
+
     };
 
     //reference: http://jasonwatmore.com/post/2018/09/11/react-basic-http-authentication-tutorial-example#user-service-js
@@ -71,7 +91,7 @@ class AddProjectModal extends React.Component{
     }
 
     render(){
-        const {name, startDate, userID, targetEndDate, error} = this.state
+        const {name, startDate, userID, targetEndDate, success,error} = this.state
         return(
             <Modal
                 {...this.props}
@@ -93,13 +113,13 @@ class AddProjectModal extends React.Component{
                          <button id="AddProjectButton" className="button" onClick={this.handleClick}>Add Project</button>
                          <br/>
                          <span className="error-message">{error}</span>
+                         <span className="success-message">{success}</span>
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-
                 </Modal.Footer>
             </Modal>
-        )
+        ) 
     }
 }
 

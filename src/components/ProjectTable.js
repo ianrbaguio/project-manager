@@ -56,6 +56,7 @@ class ProjectTable extends React.Component{
                     <AddProjectModal
                         show={this.state.addProjectModalShow}
                         onHide={addProjectModalClose}
+                        id="AddProjectModal"
                     />
                 </ButtonToolbar>
             </div>
