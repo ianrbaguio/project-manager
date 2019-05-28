@@ -39,6 +39,10 @@
   color:red;
 }
 
+.success-message{
+  color:green;
+}
+
 button, a{
   width: 200px;
   height: 30px;

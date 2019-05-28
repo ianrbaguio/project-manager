@@ -14,7 +14,11 @@ class ProjectTable extends React.Component{
             error: "",
             addProjectModalShow: false,
         };
+
+        this.addProjectModalClose = this.addProjectModalClose.bind(this);
     }
+
+    addProjectModalClose = () => this.setState({addProjectModalShow: false});
     
     componentDidMount(){
         var user = JSON.parse(sessionStorage.getItem("LoggedInUser"));
@@ -33,7 +37,7 @@ class ProjectTable extends React.Component{
     render(){
         const projects = this.state.projects;
         
-        let addProjectModalClose = () => this.setState({addProjectModalShow: false});
+        //let addProjectModalClose = () => this.setState({addProjectModalShow: false});
         
         /*  
             Renders all user's projects
@@ -55,7 +59,7 @@ class ProjectTable extends React.Component{
 
                     <AddProjectModal
                         show={this.state.addProjectModalShow}
-                        onHide={addProjectModalClose}
+                        onHide={this.addProjectModalClose.bind(this)}
                         id="AddProjectModal"
                     />
                 </ButtonToolbar>

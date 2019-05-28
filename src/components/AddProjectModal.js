@@ -59,7 +59,7 @@ class AddProjectModal extends React.Component{
             .then((data) => {
                 if(data.return){
                     this.setState({success: "New Project Added"});
-                    setTimeout(function(){this.props.onHide()}, 3000);
+                    setTimeout(function(){this.hideModal()}, 3000);
                 }
             })
             .catch(err => console.log("Add Project Error: " + err))
@@ -79,8 +79,6 @@ class AddProjectModal extends React.Component{
             });
 
         }
-
-        this.props.onHide.bind(this);
 
     };
 
