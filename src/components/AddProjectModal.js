@@ -42,6 +42,21 @@ class AddProjectModal extends React.Component{
         return isValidate;
     }
 
+    closeModal = () => {
+        if(this.state.success !== ""){
+            //put all states back to default values
+            this.setState({
+                name: "",
+                startDate: "",
+                userID: 0,
+                targetEndDate: "",
+                success: "",
+                error: "",
+            });
+            this.props.onHide();
+        }
+    }
+
     handleClick(){
         var data = {name: this.state.name,
                     userID: this.state.userID,
@@ -59,12 +74,14 @@ class AddProjectModal extends React.Component{
             .then((data) => {
                 if(data.return){
                     this.setState({success: "New Project Added"});
-                    setTimeout(function(){this.hideModal()}, 3000);
+                    setTimeout(() => this.closeModal(), 3000);
                 }
             })
             .catch(err => console.log("Add Project Error: " + err))
         }
 
+        
+        
     }
 
     componentDidMount(){
@@ -79,7 +96,6 @@ class AddProjectModal extends React.Component{
             });
 
         }
-
     };
 
     //reference: http://jasonwatmore.com/post/2018/09/11/react-basic-http-authentication-tutorial-example#user-service-js

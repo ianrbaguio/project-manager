@@ -15,7 +15,7 @@ class ProjectTable extends React.Component{
             addProjectModalShow: false,
         };
 
-        this.addProjectModalClose = this.addProjectModalClose.bind(this);
+        //this.addProjectModalClose = this.addProjectModalClose.bind(this);
     }
 
     addProjectModalClose = () => this.setState({addProjectModalShow: false});
@@ -59,7 +59,7 @@ class ProjectTable extends React.Component{
 
                     <AddProjectModal
                         show={this.state.addProjectModalShow}
-                        onHide={this.addProjectModalClose.bind(this)}
+                        onHide={this.addProjectModalClose}
                         id="AddProjectModal"
                     />
                 </ButtonToolbar>
