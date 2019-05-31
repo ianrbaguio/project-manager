@@ -231,7 +231,13 @@ h2{
 /**********************************************************
       MAIN PAGE CLASSES
 ***********************************************************/
-.main-dropdown-navbar{
-  width:100%;
-  display:block;
+#main-navbar-dropdown{
+  background-color: #33658A;
+}
+
+.main-navbar-dropdown-links{
+  padding:10px;
+  line-height:10px;
+  background-color: #33658A;
+  color: #D6F0FF;
 }
