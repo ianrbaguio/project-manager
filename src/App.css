@@ -120,7 +120,7 @@ h2{
   background-color: #33658A;
   color: #D6F0FF;
   height: 100px;
-  line-height: 100px;
+  line-height: 50px;
   font-size: 25px;
   font-weight: bold;
 }
@@ -225,4 +225,13 @@ h2{
 .center-modal{
   width: 50%;
   margin: 0 auto;
+}
+
+
+/**********************************************************
+      MAIN PAGE CLASSES
+***********************************************************/
+.main-dropdown-navbar{
+  width:100%;
+  display:block;
 }
