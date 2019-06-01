@@ -7,6 +7,7 @@ import Login from './components/Login';
 import Demo from './components/Register';
 import Layout from './components/Layout';
 import ProjectTable from './components/ProjectTable';
+import EditProject from './components/EditProject';
 
 class App extends Component {
   render(){
@@ -18,6 +19,7 @@ class App extends Component {
             <Route exact path="/" component={Login}/>
             <Route exact path="/register" component={Demo}/>
             <PrivateRoute exact path="/main" component={ProjectTable} />
+            <PrivateRoute exact path="/editProject" component={EditProject}/>
             <Redirect to="/" />
           </Switch>
         </div>

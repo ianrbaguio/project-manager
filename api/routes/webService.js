@@ -105,4 +105,13 @@ router.post("/addProject", function(req, res, next){
     });
 
 });
+
+router.get("/getProjects", function(req,res,next){
+    var projectID = req.query.projectID;
+
+    var sql = "CALL GetProjects(?)";
+    db.query(sql, [projectID], function(err,data){
+        (err) ? res.send(JSON.stringify({projectID: 0, projectName: "ERROR"})) : res.send(JSON.stringify({projects: data[0]}));
+    });
+})
 module.exports = router;
