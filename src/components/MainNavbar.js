@@ -7,8 +7,8 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 function MainNavbar(){
     return(
             <DropdownButton id="main-navbar-dropdown" color="#33658A" title="Projects">
-                <Dropdown.Item className="main-navbar-dropdown-links" href="/editProjects">Edit Projects</Dropdown.Item>
-                <Dropdown.Item className="main-navbar-dropdown-links" href="/editProjects">Delete Projects</Dropdown.Item>
+                <Dropdown.Item className="main-navbar-dropdown-links" href="/editProject">Edit Project</Dropdown.Item>
+                <Dropdown.Item className="main-navbar-dropdown-links" href="/deleteProject">Delete Project</Dropdown.Item>
             </DropdownButton>
     );
 }
