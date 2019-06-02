@@ -8,9 +8,23 @@ class EditProject extends React.Component{
         super(props);
         this.state = {
             ProjectID: 0,
+            projects: [],
             success: "",
             error: ""
         };
+    }
+
+    componentDidMount(){
+        var user = JSON.parse(sessionStorage.getItem("LoggedInUser"))
+        var userID = user[0].UserID;
+        fetch("http://localhost:9000/webService/getProjects?userID=" + userID)
+        .then(response => response.json())
+        .then((data) => {
+            this.setState({
+                projects: data.projects
+            });
+        })
+        .catch(err => console.log(err));
     }
 
     handleChange(event) {
@@ -20,7 +34,15 @@ class EditProject extends React.Component{
       }
 
     render(){
-        console.log("ProjectID: " + this.state.ProjectID);
+        const projects = this.state.projects;
+        const projectRender = projects.map((project) => {
+            return(
+                <MenuItem value={project.ProjectID}>
+                    <em>{project.ProjectName}</em>
+                </MenuItem>
+            )
+        });
+
         return(
             <div id="dropdownlist-container" className="dropdownlist-container">
                 <Select
@@ -33,14 +55,9 @@ class EditProject extends React.Component{
                 }
             }>
                 <MenuItem value="0">
-                    <em>Select a project</em>
+                    Select a project
                 </MenuItem>
-                <MenuItem value="1">
-                    <em>Project Manager</em>
-                </MenuItem>
-                <MenuItem value="2">
-                    <em>Project Manager 2</em>
-                </MenuItem>
+               {projectRender} 
             </Select>
             </div>
         );
