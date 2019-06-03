@@ -162,6 +162,46 @@ BEGIN
     END IF;
 END $$;
 
+
+-- CREATION OF GetProject Procedure
+DROP PROCEDURE GetProject;
+DELIMITER $$
+CREATE PROCEDURE GetProject($ProjectID INT,
+							$UserID INT)
+BEGIN
+	DECLARE $ReturnCode INT DEFAULT 1;
+    DECLARE `_rollback` BOOL DEFAULT 0;
+    DECLARE CONTINUE HANDLER FOR SQLEXCEPTION SET `_rollback` = 1;
+    
+    IF $ProjectID IS NULL OR $ProjectID = 0 THEN
+		SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'GetProject - Required Parameter: $ProjectID';
+	ELSEIF $UserID IS NULL OR $UserID = 0 THEN
+		SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'GetProject - Required Parameter: $UserID';
+	ELSE
+		BEGIN
+			SELECT ProjectID,
+				ProjectName,
+                StartDate,
+                TargetEndDate,
+                ActualEndDate
+			FROM Projects
+            WHERE ProjectID = $ProjectID AND UserID = $UserID;
+            
+            IF `_rollback` THEN
+				BEGIN
+					ROLLBACK;
+                    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'GetProject - SELECT Error';
+                END;
+			ELSE
+				BEGIN
+					COMMIT;
+                    SET $ReturnCode = 0;
+                END;
+			END IF;
+        END;
+	END IF;
+END $$
+
 -- CREATION OF CompleteTask Procedure
 DROP PROCEDURE CompleteTask;
 DELIMITER $$

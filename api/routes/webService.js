@@ -63,7 +63,7 @@ router.post("/register", function(req,res,next){
 //references: https://www.sitepoint.com/using-node-mysql-javascript-client/
 /*
     With using stored procedures, in order to only get the query results,
-    we have to use data[0] to not include the object array of 
+    we have to use data[0] to not include the object array of query status
     {"fieldCount":0,"affectedRows":0,"insertId":0,"serverStatus":2,"warningCount":0,"message":"","protocol41":true,"changedRows":0}
 */
 router.get("/getProjects", function(req, res, next){
@@ -75,6 +75,15 @@ router.get("/getProjects", function(req, res, next){
     });
 });
 
+router.get("/getProject", function(req,res,next){
+    var projectID = req.query.projectID;
+    var userID = req.query.userID;
+
+    var sql = "CALL GetProject(?,?)";
+    db.query(sql,[projectID, userID], function(err, data){
+        (err) ? res.send(err) : res.send(JSON.stringify({project: data[0]}));
+    })
+});
 router.get("/getTasks", function(req, res, next){
     var ProjectID = req.query.projectID;
 
