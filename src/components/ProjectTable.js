@@ -49,7 +49,7 @@ class ProjectTable extends React.Component{
         var projectsList = projects.map((project) => {
 
             return(
-                <ProjectRow project={project} key={project.ProjectID} renderProjects={this.renderProjects}/>
+                <ProjectRow project={project} key={project.ProjectID} renderProjects={this.getProjects}/>
             );
         });
 
