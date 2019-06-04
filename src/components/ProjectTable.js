@@ -19,8 +19,8 @@ class ProjectTable extends React.Component{
     }
 
     addProjectModalClose = () => this.setState({addProjectModalShow: false});
-    
-    componentDidMount(){
+
+    getProjects = () => {
         var user = JSON.parse(sessionStorage.getItem("LoggedInUser"));
         var userID = user[0].UserID;
         fetch("http://localhost:9000/webService/getProjects?userID=" + userID)
@@ -32,6 +32,10 @@ class ProjectTable extends React.Component{
 
         })
         .catch(error => "GetProjects Error: " + error);
+    }
+    
+    componentDidMount(){
+        this.getProjects();
     }
 
     render(){
@@ -45,7 +49,7 @@ class ProjectTable extends React.Component{
         var projectsList = projects.map((project) => {
 
             return(
-                <ProjectRow project={project} key={project.ProjectID}/>
+                <ProjectRow project={project} key={project.ProjectID} renderProjects={this.renderProjects}/>
             );
         });
 

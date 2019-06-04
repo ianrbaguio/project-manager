@@ -187,6 +187,10 @@ h2{
   display:inline-block;
 }
 
+.project-column-inline{
+  display:inline-block;
+}
+
 .project-header{
   font-weight: bold;
 }

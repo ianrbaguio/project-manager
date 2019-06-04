@@ -7,12 +7,14 @@ class ProjectRow extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            showTasks: "block"
+            showTasks: true
         }
     }
     
     showHideClick = () => {
-        console.log("SHOW/HIDE CLICKED");
+        this.setState({
+            showTasks: this.state.showTasks ? false : true
+        })
     }
 
     render(){
@@ -21,14 +23,17 @@ class ProjectRow extends React.Component{
         return(
             <div className="project-full-container">
                 <div className="project-row-container">
-                <div className="project-column project-hide-show-header" onClick={this.showHideClick}>HIDE</div>
+                <div className="project-column-inline project-hide-show-header">
+                    <div onClick={this.showHideClick}>{this.state.showTasks ? "HIDE" : "SHOW"}</div>
+                    <div>REMOVE</div>
+                </div>
                 <div className="project-column project-name-header project-name">{project.ProjectName}</div>
                 <div className="project-column project-start-date">{project.StartDate}</div>
                 <div className="project-column project-end-date">{project.TargetEndDate}</div>
                 </div>
 
                 <div className="project-task-container" style={{display:showTasks}}>
-                    <TaskTable projectID={project.ProjectID}/>
+                    {this.state.showTasks && <TaskTable projectID={project.ProjectID}/>}
                 </div>
             </div>
         );
