@@ -115,4 +115,14 @@ router.post("/addProject", function(req, res, next){
 
 });
 
+router.get("/removeProject", function(req,res,next){
+    var projectID = req.query.projectID;
+    var userID = req.query.userID;
+
+    var sql = "CALL RemoveProject(?,?)";
+    db.query(sql, [projectID, userID], function(err,data){
+        (err) ? res.send(err) : res.send(JSON.stringify({return: true}));
+    });
+});
+
 module.exports = router;

@@ -18,9 +18,18 @@ class ProjectRow extends React.Component{
     }
 
     removeProject = () =>{
-        console.log(this.props.project.ProjectID);
-         this.props.renderProjects();
+        var projectID = this.props.project.ProjectID;
+        var user = JSON.parse(sessionStorage.getItem("LoggedInUser"));
+        var userID = user[0].UserID;
 
+        fetch("http://localhost:9000/webService/removeProject?projectID=" + projectID + "&userID=" + userID)
+        .then(response => response.json())
+        .then((data) => {
+            if(data.return){
+                this.props.renderProjects();
+            }
+        })
+        .catch(err => console.log("Remove Project Error: " + err));
     }
 
     render(){

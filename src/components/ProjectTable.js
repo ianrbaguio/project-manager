@@ -18,7 +18,10 @@ class ProjectTable extends React.Component{
         //this.addProjectModalClose = this.addProjectModalClose.bind(this);
     }
 
-    addProjectModalClose = () => this.setState({addProjectModalShow: false});
+    addProjectModalClose = () => {
+        this.setState({addProjectModalShow: false});
+        this.getProjects();
+    };
 
     getProjects = () => {
         var user = JSON.parse(sessionStorage.getItem("LoggedInUser"));
