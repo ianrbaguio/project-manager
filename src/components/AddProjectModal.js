@@ -19,6 +19,9 @@ class AddProjectModal extends React.Component{
         this.handleClick = this.handleClick.bind(this);
     }
 
+    /*
+    *   Function that validates add project modal form
+    */
     formValidation = () => {
         const {name, startDate, userID, targetEndDate, error} = this.state;
         
@@ -42,6 +45,9 @@ class AddProjectModal extends React.Component{
         return isValidate;
     }
 
+    /*
+    *   Function that closes the modal dialog
+    */
     closeModal = () => {
         if(this.state.success !== ""){
             //put all states back to default values
@@ -98,7 +104,10 @@ class AddProjectModal extends React.Component{
         }
     };
 
-    //reference: http://jasonwatmore.com/post/2018/09/11/react-basic-http-authentication-tutorial-example#user-service-js
+    /*
+    *  function that set the states from project name textbox value 
+    *  reference: http://jasonwatmore.com/post/2018/09/11/react-basic-http-authentication-tutorial-example#user-service-js
+    */
     handleChange(e){
         const {name,value} = e.target;
         this.setState({ [name]: value});

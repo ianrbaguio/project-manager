@@ -11,12 +11,19 @@ class ProjectRow extends React.Component{
         }
     }
     
+    /*
+    * Function that shows or hides the selected project's tasks
+    */
     showHideClick = () => {
         this.setState({
             showTasks: this.state.showTasks ? false : true
         })
     }
 
+    /*
+    *   Function that remove's selected project from user's list
+    *   calls renderProjects function from ProjectTable component
+    */
     removeProject = () =>{
         var projectID = this.props.project.ProjectID;
         var user = JSON.parse(sessionStorage.getItem("LoggedInUser"));

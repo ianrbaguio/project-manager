@@ -18,11 +18,17 @@ class ProjectTable extends React.Component{
         //this.addProjectModalClose = this.addProjectModalClose.bind(this);
     }
 
+    /*
+        Function that will close the modal dialog and re-renders the project table
+    */
     addProjectModalClose = () => {
         this.setState({addProjectModalShow: false});
         this.getProjects();
     };
 
+    /*
+        Function that gets all user's current projects
+    */
     getProjects = () => {
         var user = JSON.parse(sessionStorage.getItem("LoggedInUser"));
         var userID = user[0].UserID;
