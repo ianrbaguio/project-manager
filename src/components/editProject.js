@@ -2,7 +2,10 @@ import React from 'react';
 import '../App.css';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
+import Button from 'react-bootstrap/Button';
 import ProjectRow from './ProjectRow';
+import AddTaskModal from './AddTaskModal';
 
 class EditProject extends React.Component{
     constructor(props){
@@ -102,6 +105,20 @@ class EditProject extends React.Component{
                {projectsRender} 
             </Select>
             </div>
+            <div>
+            <ButtonToolbar>
+                    <Button variant="primary"
+                            onClick={() => this.setState({addProjectModalShow: true})}
+                            > + NEW PROJECT</Button>
+
+                    <AddTaskModal
+                        show={this.state.addProjectModalShow}
+                        onHide={this.addProjectModalClose}
+                        id="AddProjectModal"
+                    />
+                </ButtonToolbar>
+            </div>
+
             <div>
                 {projectSelected}
             </div>
