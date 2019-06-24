@@ -15,7 +15,8 @@ class EditProject extends React.Component{
             projects: [],
             ProjectID: 0,
             success: "",
-            error: ""
+            error: "",
+            addTaskModalShow: false,
         };
     }
 
@@ -31,6 +32,13 @@ class EditProject extends React.Component{
         })
         .catch(err => console.log(err));
     }
+
+    /*
+        Function that will close the modal dialog and re-renders the project table
+    */
+   addProjectModalClose = () => {
+    this.setState({addProjectModalShow: false});
+    };
 
     handleChange(event) {
         this.setState({
@@ -108,13 +116,14 @@ class EditProject extends React.Component{
             <div>
             <ButtonToolbar>
                     <Button variant="primary"
-                            onClick={() => this.setState({addProjectModalShow: true})}
-                            > + NEW PROJECT</Button>
+                            onClick={() => this.setState({addTaskModalShow: true})}
+                            > + NEW TASK</Button>
 
                     <AddTaskModal
-                        show={this.state.addProjectModalShow}
+                        show={this.state.addTaskModalShow}
                         onHide={this.addProjectModalClose}
-                        id="AddProjectModal"
+                        id="AddTaskModal"
+                        projectID={this.state.ProjectID}
                     />
                 </ButtonToolbar>
             </div>
