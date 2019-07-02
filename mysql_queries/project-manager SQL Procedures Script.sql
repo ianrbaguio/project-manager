@@ -197,7 +197,6 @@ BEGIN
     END IF;
 END $$;
 
-
 -- CREATION OF GetProject Procedure
 DROP PROCEDURE GetProject;
 DELIMITER $$

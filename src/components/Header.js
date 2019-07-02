@@ -13,7 +13,7 @@ class Header extends Component {
             
         return(
             <div className="header">
-                PROJECT MANAGER
+                <a href="/main">PROJECT MANAGER</a>
                 <div>
                 {LoginNavigation}
                 </div>
