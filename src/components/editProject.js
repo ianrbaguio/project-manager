@@ -17,6 +17,7 @@ class EditProject extends React.Component{
             success: "",
             error: "",
             addTaskModalShow: false,
+            addTaskModalContent: false,
         };
     }
 
@@ -53,9 +54,9 @@ class EditProject extends React.Component{
         if(!isNaN(projectid)){
 
             if(projectid > 0)
-                this.setState({addTaskModalShow: true});
+                this.setState({addTaskModalContent: true});
             else   
-                this.setState({addTaskModalShow: false});
+                this.setState({addTaskModalContent: false});
                 
             var user = JSON.parse(sessionStorage.getItem("LoggedInUser"))
             var userID = user[0].UserID;
@@ -120,7 +121,7 @@ class EditProject extends React.Component{
             </Select>
             </div>
             {
-                this.state.addTaskModalShow ?
+                this.state.addTaskModalContent ?
                 <div>
             <ButtonToolbar>
                     <Button variant="primary"
