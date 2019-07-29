@@ -86,7 +86,6 @@ router.get("/getProject", function(req,res,next){
 });
 router.get("/getTasks", function(req, res, next){
     var ProjectID = req.query.projectID;
-
     var sql = "CALL GetTasks(?)";
     db.query(sql, [ProjectID], function(err,data){
         (err) ? res.send(err) : res.send(JSON.stringify({tasks: data[0]}));
@@ -113,6 +112,18 @@ router.post("/addProject", function(req, res, next){
         (err) ? res.send(err) : res.send(JSON.stringify({return: true}));
     });
 
+});
+
+router.post("/addTask", function(req,res,next){
+    var name = req.body.name;
+    var projectID = req.body.projectID;
+    var startDate = req.body.startDate;
+    var targetEndDate = req.body.targetEndDate;
+
+    var sql = "CALL AddTask(?,?,?,?)";
+    db.query(sql, [projectID, name, startDate, targetEndDate], function(err,data){
+        (err) ? res.send(err) : res.send(JSON.stringify({return: true}));
+    });
 });
 
 router.get("/removeProject", function(req,res,next){

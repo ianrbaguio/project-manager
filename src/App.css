@@ -74,7 +74,7 @@ h2{
 
 .span-label{
   display:inline-block;
-  min-width:100px;
+  min-width:150px;
   text-align:right;
 }
 
@@ -151,6 +151,7 @@ h2{
 **********************************************************/
 .add-project-container{
   float:right;
+  margin: 10px auto;
 }
 
 .project-headers-container{
@@ -164,7 +165,7 @@ h2{
 }
 
 .project-full-container{
-  width:100%;
+  width:98%;
   margin:10px;
   border:1px solid black;
 }

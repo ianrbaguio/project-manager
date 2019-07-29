@@ -22,6 +22,7 @@ class EditProject extends React.Component{
     }
 
     componentDidMount(){
+        this._isMounted = true;
         var user = JSON.parse(sessionStorage.getItem("LoggedInUser"))
         var userID = user[0].UserID;
         fetch("http://localhost:9000/webService/getProjects?userID=" + userID)
@@ -38,7 +39,8 @@ class EditProject extends React.Component{
         Function that will close the modal dialog and re-renders the project table
     */
    addProjectModalClose = () => {
-    this.setState({addProjectModalShow: false});
+    this.setState({addTaskModalShow: false});
+    this.setProject(this.state.ProjectID);
     };
 
     handleChange(event) {
@@ -122,7 +124,7 @@ class EditProject extends React.Component{
             </div>
             {
                 this.state.addTaskModalContent ?
-                <div>
+                <div className="add-project-container">
             <ButtonToolbar>
                     <Button variant="primary"
                             onClick={() => this.setState({addTaskModalShow: true})}
@@ -132,14 +134,15 @@ class EditProject extends React.Component{
                         show={this.state.addTaskModalShow}
                         onHide={this.addProjectModalClose}
                         id="AddTaskModal"
-                        projectID={this.state.ProjectID}
+                        project={project}
+                        projectid={this.state.ProjectID}
                     />
                 </ButtonToolbar>
             </div>
             : ''
             }
 
-            <div>
+            <div className="project-headers-container">
                 {projectSelected}
             </div>
             </div>

@@ -41,6 +41,7 @@ class ProjectRow extends React.Component{
 
     render(){
     var project = this.props.project;
+
     var {showTasks} = this.state;
         return(
             <div className="project-full-container">
