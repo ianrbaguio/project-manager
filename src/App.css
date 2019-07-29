@@ -201,6 +201,10 @@ h2{
   text-align: center;
 }
 
+.project-hide-show-header:hover{
+  cursor:pointer;
+}
+
 .project-name{
   width: 30%;
 }
