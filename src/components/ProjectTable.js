@@ -5,6 +5,7 @@ import '../App.css';
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import Button from 'react-bootstrap/Button';
 import AddProjectModal from './AddProjectModal';
+import global from '../global/global.json';
 
 class ProjectTable extends React.Component{
     constructor(props){
@@ -32,7 +33,7 @@ class ProjectTable extends React.Component{
     getProjects = () => {
         var user = JSON.parse(sessionStorage.getItem("LoggedInUser"));
         var userID = user[0].UserID;
-        fetch("http://localhost:9000/webService/getProjects?userID=" + userID)
+        fetch(global.api + "/webService/getProjects?userID=" + userID)
         .then(response => response.json())
         .then((data) => { 
             this.setState({

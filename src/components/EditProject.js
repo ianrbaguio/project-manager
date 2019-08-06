@@ -6,6 +6,7 @@ import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import Button from 'react-bootstrap/Button';
 import ProjectRow from './ProjectRow';
 import AddTaskModal from './AddTaskModal';
+import global from '../global/global.json';
 
 class EditProject extends React.Component{
     constructor(props){
@@ -25,7 +26,7 @@ class EditProject extends React.Component{
         this._isMounted = true;
         var user = JSON.parse(sessionStorage.getItem("LoggedInUser"))
         var userID = user[0].UserID;
-        fetch("http://localhost:9000/webService/getProjects?userID=" + userID)
+        fetch(global.api + "/webService/getProjects?userID=" + userID)
         .then(response => response.json())
         .then((data) => {
             this.setState({
@@ -63,7 +64,7 @@ class EditProject extends React.Component{
             var user = JSON.parse(sessionStorage.getItem("LoggedInUser"))
             var userID = user[0].UserID;
 
-            fetch("http://localhost:9000/webService/getProject?userID=" + userID + "&projectID=" + projectid)
+            fetch(global.api + "/webService/getProject?userID=" + userID + "&projectID=" + projectid)
             .then(response => response.json())
             .then((data) => {
                 this.setState({

@@ -1,6 +1,7 @@
 import React from 'react';
 //import logo from '../logo.svg';
 import '../App.css';
+import global from '../global/global.json';
 
 class TaskRow extends React.Component{
     constructor(props){
@@ -34,7 +35,7 @@ class TaskRow extends React.Component{
             event.target.disabled = true;
             event.target.checked = true;
 
-            fetch("http://localhost:9000/webService/completeTask?taskID=" + taskID)
+            fetch(global.api + "/webService/completeTask?taskID=" + taskID)
             .then((res) => res.json())
             .then((data) => {
                 if(data.return){

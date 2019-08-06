@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-bootstrap/Modal';
+import global from '../global/global.json';
 
 class AddProjectModal extends React.Component{
     constructor(props){
@@ -71,7 +72,7 @@ class AddProjectModal extends React.Component{
 
         //if it's true then add new project
         if(this.formValidation()){
-            fetch("http://localhost:9000/webService/addProject", {
+            fetch(global.api + "/webService/addProject", {
                 method: "POST",
                 headers: {'Content-Type' : 'application/json'},
                 body: JSON.stringify(data)

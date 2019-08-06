@@ -2,6 +2,7 @@ import React from 'react';
 //import logo from '../logo.svg';
 import TaskRow from './TaskRow';
 import '../App.css';
+import global from '../global/global.json';
 
 class TaskTable extends React.Component{
     constructor(props){
@@ -19,7 +20,7 @@ class TaskTable extends React.Component{
                 var projectID = this.props.projectID;
                 console.log(projectID);
                 if(projectID > 0){
-                    fetch("http://localhost:9000/webService/getTasks?projectID=" + projectID)
+                    fetch(global.api + "/webService/getTasks?projectID=" + projectID)
                     .then(res => res.json())
                     .then((data) => {
                 

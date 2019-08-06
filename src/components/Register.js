@@ -9,6 +9,7 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
+import global from '../global/global.json';
 
 //reference: https://material-ui.com/
 //tutorial: https://codesandbox.io/s/rlv2r08lno
@@ -69,7 +70,7 @@ class Register extends React.Component{
      * 
     *******************************************************************/
     checkUsernameExists = username => {
-        fetch("http://localhost:9000/webService/checkUsername?username=" + username)
+        fetch(global.api + "/webService/checkUsername?username=" + username)
             .then(response => response.json())
             .then((data) => {
                 this.setState({
@@ -90,7 +91,7 @@ class Register extends React.Component{
                     username: this.state.username,
                     email: this.state.email,
                     password: this.state.password}
-        fetch("http://localhost:9000/webService/register",{
+        fetch(global.api + "/webService/register",{
             method: "POST",
             headers: {'Content-Type' : 'application/json'},
             body: JSON.stringify(data)

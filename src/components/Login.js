@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
 import LoginNavbar from './LoginNavbar';
+import global from '../global/global.json';
 
 // Login component that handles login functionality for the project manager project
 class Login extends Component {
@@ -35,7 +36,7 @@ class Login extends Component {
         var data = {username: this.state.username, password: this.state.password};
         
         if(data.username !== "" && data.password !== ""){
-            fetch("http://localhost:9000/webService/login", {
+            fetch(global.api + "/webService/login", {
             method: "POST",
             headers: {'Content-Type' : 'application/json'},
             body: JSON.stringify(data)

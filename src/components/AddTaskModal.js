@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-bootstrap/Modal';
+import global from '../global/global.json';
 
 class AddTaskModal extends React.Component{
     constructor(props){
@@ -58,7 +59,7 @@ class AddTaskModal extends React.Component{
             }
 
             if(this.formValidation()){
-                fetch("http://localhost:9000/webService/addTask", {
+                fetch(global.api + "/webService/addTask", {
                 method: "POST",
                 headers: {'Content-Type' : 'application/json'},
                 body: JSON.stringify(data)

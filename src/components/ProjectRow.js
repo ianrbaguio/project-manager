@@ -2,6 +2,7 @@ import React from 'react';
 //import logo from '../logo.svg';
 import '../App.css';
 import TaskTable from './TaskTable'
+import global from '../global/global.json';
 
 class ProjectRow extends React.Component{
     constructor(props){
@@ -29,7 +30,7 @@ class ProjectRow extends React.Component{
         var user = JSON.parse(sessionStorage.getItem("LoggedInUser"));
         var userID = user[0].UserID;
 
-        fetch("http://localhost:9000/webService/removeProject?projectID=" + projectID + "&userID=" + userID)
+        fetch(global.api + "/webService/removeProject?projectID=" + projectID + "&userID=" + userID)
         .then(response => response.json())
         .then((data) => {
             if(data.return){
