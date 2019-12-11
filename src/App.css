@@ -35,101 +35,102 @@
 /********************************************************************************
               GENERAL CLASSES
 *********************************************************************************/
-.error-message{
-  color:red;
+.error-message {
+  color: red;
 }
 
-.success-message{
-  color:green;
+.success-message {
+  color: green;
 }
 
-button, a{
+button,
+a {
   width: 200px;
   height: 30px;
   border: none;
-  text-align:center;
-  background-color: #33658A;
-  color: #D6F0FF;
+  text-align: center;
+  background-color: #33658a;
+  color: #d6f0ff;
 }
 
-button:hover{
-  cursor:pointer;
+button:hover {
+  cursor: pointer;
 }
 
-.full-width{
-  width:50%;
+.full-width {
+  width: 50%;
   margin: 0 auto;
 }
 
-.theme{
-  background-color: #33658A;
-  color: #D6F0FF;
+.theme {
+  background-color: #33658a;
+  color: #d6f0ff;
 }
 /********************************************************************************
               LOGIN CLASSES
 *********************************************************************************/
-h2{
-  text-align:center;
+h2 {
+  text-align: center;
 }
 
-.span-label{
-  display:inline-block;
-  min-width:150px;
-  text-align:right;
+.span-label {
+  display: inline-block;
+  min-width: 150px;
+  text-align: right;
 }
 
-.input-text{
+.input-text {
   margin: 5px 10px;
 }
 
-.button{
-  width:100%;
+.button {
+  width: 100%;
   margin: 10px;
-  display:inline-block;
+  display: inline-block;
   font-size: 12px;
 }
 
-.center{
+.center {
   margin: 0 auto;
-  width:25%;
+  width: 25%;
 }
 
-.login-nav-container{
-  width:100%;
-  text-align:center;
-  background-color: #33658A;
-  color: #D6F0FF;
+.login-nav-container {
+  width: 100%;
+  text-align: center;
+  background-color: #33658a;
+  color: #d6f0ff;
   padding: 5px 0;
 }
 
-.login-nav-container a{
-  color: #D6F0FF;
+.login-nav-container a {
+  color: #d6f0ff;
   padding: 0 10px;
 }
 
-.register{
+.register {
   text-decoration: none;
 }
 
 /********************************************************************************
               HEADER AND FOOTER CLASSES
 *********************************************************************************/
-.header{
+.header {
   text-align: center;
-  width:100%;
-  background-color: #33658A;
-  color: #D6F0FF;
+  width: 100%;
+  background-color: #33658a;
+  color: #d6f0ff;
   height: 100px;
   line-height: 50px;
   font-size: 25px;
   font-weight: bold;
 }
 
-.footer{
+.footer {
   text-align: center;
-  width:100%;
-  background-color: #33658A;
-  color: #D6F0FF;
+  width: 100%;
+  background-color: #33658a;
+  color: #d6f0ff;
   bottom: 0px;
   position: relative;
   /* height: 60px; */
@@ -140,90 +141,94 @@ h2{
                   REGISTER CLASSES
 *********************************************************/
 
-.center-form{
+.center-form {
   margin: 0 auto;
   /* padding: 25px; */
-  text-align:center;
+  text-align: center;
 }
 
 /**********************************************************
                   PROJECT TABLE CONTAINER CLASSES
 **********************************************************/
-.add-project-container{
-  float:right;
+.add-project-container {
+  float: right;
   margin: 10px auto;
 }
 
-.project-headers-container{
-  clear:both;
+.project-headers-container {
+  clear: both;
 }
 
-.project-table-container{
-  width:75%;
-  margin:0 auto;
-  padding:10px;
+.project-table-container {
+  width: 75%;
+  margin: 0 auto;
+  padding: 10px;
 }
 
-.project-full-container{
-  width:98%;
-  margin:10px;
-  border:1px solid black;
+.project-full-container {
+  width: 98%;
+  margin: 10px;
+  border: 1px solid black;
 }
 
-.project-row-container{
-  background-color: #33658A;
-  color: #D6F0FF;
-  width:100%;
-  height:50px;
+.project-row-container {
+  background-color: #33658a;
+  color: #d6f0ff;
+  width: 100%;
+  height: 50px;
 }
 
-.project-task-container{
+.project-task-container {
   background-color: white;
-  width:100%;
+  width: 100%;
   /* padding: 5px 0; */
 }
 
-.project-column{
-  padding-top:15px;
-  display:inline-block;
+.project-column {
+  padding-top: 15px;
+  display: inline-block;
 }
 
-.project-column-inline{
-  display:inline-block;
+.project-column-inline {
+  display: inline-block;
 }
 
-.project-header{
+.project-header {
   font-weight: bold;
 }
 
-.project-hide-show-header{
-  width:15%;
+.project-hide-show-header {
+  width: 15%;
   text-align: center;
 }
 
-.project-hide-show-header:hover{
-  cursor:pointer;
+.project-hide-show-header:hover {
+  cursor: pointer;
 }
 
-.project-name{
+.project-name {
   width: 30%;
 }
 
-.project-name-header{
+.project-name-header {
   text-align: center;
 }
 
-.project-start-date{
-  width:25%;
+.project-start-date {
+  width: 25%;
 }
 
-.project-end-date{
-  width:25%;
+.project-end-date {
+  width: 25%;
 }
 
-.project-task-row{
+.project-task-row {
   border-top: 1px solid black;
   padding: 5px;
+}
+
+.behind-schedule {
+  background-color: rgba(255, 0, 0, 0.2);
 }
 
 /***********************************************************
@@ -231,32 +236,30 @@ h2{
         MODAL CLASSES
 
 ***********************************************************/
-.center-modal{
+.center-modal {
   width: 50%;
   margin: 0 auto;
 }
 
-
 /**********************************************************
       MAIN PAGE CLASSES
 ***********************************************************/
-#main-navbar-dropdown{
-  background-color: #33658A;
+#main-navbar-dropdown {
+  background-color: #33658a;
 }
 
-.main-navbar-dropdown-links{
-  padding:10px;
-  line-height:10px;
-  background-color: #33658A;
-  color: #D6F0FF;
+.main-navbar-dropdown-links {
+  padding: 10px;
+  line-height: 10px;
+  background-color: #33658a;
+  color: #d6f0ff;
 }
-
 
 /**********************************************************
       EDIT PROJECT CLASSES
 ***********************************************************/
-#dropdownlist-container{
-  margin:0 auto;
-  padding:10px;
-  width:12%;
+#dropdownlist-container {
+  margin: 0 auto;
+  padding: 10px;
+  width: 12%;
 }
