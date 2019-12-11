@@ -20,9 +20,11 @@ class TaskRow extends React.Component {
     let backgroundColor = "";
     let isChecked = false;
 
+    // If there is an actual end date then set background color to green
     if (this.props.task.ActualEndDate !== "") {
       backgroundColor = "rgba(0,255,0,0.2)";
       isChecked = true;
+      // Planned End Date already passed from today's date set background color to red
     } else if (taskEndDate < today) {
       backgroundColor = "rgba(255,0,0,0.2)";
       isChecked = false;
