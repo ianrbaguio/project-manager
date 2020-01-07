@@ -16,7 +16,7 @@ pipeline{
         }
         stage('Deploy'){
             steps{
-                sh "cp -a build /var/www"
+                sh "cp -a build /var/www/project-manager/"
             }
         }
     }
