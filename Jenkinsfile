@@ -16,7 +16,7 @@ pipeline{
         }
         stage('Deploy'){
             steps{
-                sh "echo 'Deploying...'"
+                sh "cp -a build /var/www"
             }
         }
     }
