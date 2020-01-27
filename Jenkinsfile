@@ -17,8 +17,8 @@ pipeline{
         stage('Deploy'){
             steps{
                 sh """
-                sudo rm -rf /var/www/project-manager/build/*
-                sudo cp -a build /var/www/project-manager/"""
+                rm -rf /var/www/project-manager/build/*
+                cp -a build /var/www/project-manager/"""
             }
         }
     }
