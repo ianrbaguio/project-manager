@@ -2,6 +2,8 @@ CREATE DATABASE ProjectManager;
 
 USE ProjectManager;
 
+SELECT * FROM Users
+
 -- Creation of Users Table
 CREATE TABLE Users(
 	UserID INT AUTO_INCREMENT,
